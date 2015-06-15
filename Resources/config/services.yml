@@ -1,0 +1,8 @@
+parameters:
+    select_tag.class: Service\SelectTag
+
+services:
+    select_tag:
+        class: "%select_tag.class%"
+        calls:
+          - [setContainer,  [ @service_container ]]

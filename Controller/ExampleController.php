@@ -24,4 +24,37 @@ class ExampleController
         }
         return $tag;
     }
+
+    /**
+     * @param $apiCaller
+     * @param $landing
+     * @param $tagSlug
+     * Created by Thibaut Deflandre <thibaut.deflandre@gmail.com>
+     */
+    protected function setFeaturedHandler($apiCaller, $landing, $tagSlug)
+    {
+        if ($landing != null) {
+            return $this->get('listing_content')->getListingContent(
+                $apiCaller,
+                $this->container->getParameter('editorial_api'),
+                [
+                    "fl" => "someparameters",
+                    "editorial_content_type" => $landing,
+                    "locale" => $this->container->getParameter('editorial_locale'),
+                ]
+            );
+        } elseif ($tagSlug != null) {
+            return $this->get('listing_content')->getListingContent(
+                $apiCaller,
+                $this->container->getParameter('editorial_api'),
+                [
+                    "tag" => $tagSlug,
+                    "fl" => "someparameters",
+                    "locale" => $this->container->getParameter('editorial_locale'),
+                ]
+            );
+        }
+
+        return null;
+    }
 }

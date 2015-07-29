@@ -14,5 +14,9 @@ One example for testing a service
 ```
 Service\SelectTag.php
 ```
+One example for testing a controller with an protected method and some service to call inside
+```
+Controller\ExampleComplexControllerTest.php
+```
 
 More example are coming...
